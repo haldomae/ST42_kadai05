@@ -43,17 +43,45 @@ class HomePage extends StatelessWidget{
         backgroundColor: Colors.green,
       ),
       // 画面の本体部分
-      body: Center(
-        // 中央配置で要素を配置
-        child: Text(
-          "Hello Flutter",
-          // 装飾
-          style: TextStyle(
-            fontSize: 24,
-            color: Colors.blue
+      // Containerは装飾可能な箱
+      body: Container(
+        // 画面の横幅いっぱい
+        width: double.infinity,
+        // 画面の縦幅いっぱい
+        height: double.infinity,
+        // 中央で要素配置
+        child: Center(
+          // Columnは縦に要素を並べる
+          child: Column(
+            // 縦方向の中央寄せ
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // アイコン表示
+              Icon(
+                Icons.flutter_dash,
+                size: 100,
+                color: Colors.amber,
+              ),
+
+              // 間を開ける
+              SizedBox(height: 20),
+
+              // メインメッセージ
+              Text(
+                // 表示したいテキスト
+                "Flutterへようこそ",
+                // テキストの装飾
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red
+                ),
+              )
+            ],
           ),
         ),
       ),
+
     );
   }
 }
