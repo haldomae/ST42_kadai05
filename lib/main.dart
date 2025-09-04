@@ -49,6 +49,24 @@ class HomePage extends StatelessWidget{
         width: double.infinity,
         // 画面の縦幅いっぱい
         height: double.infinity,
+
+        // グラデーション背景
+        decoration: BoxDecoration(
+          // 線形グラデーション
+          gradient: LinearGradient(
+              // 上から
+              begin: Alignment.topCenter,
+              // 下から
+              end: Alignment.bottomCenter,
+              colors: [
+                // 薄い緑
+                Colors.green.shade100,
+                // 濃い緑
+                Colors.green.shade300
+              ],
+          )
+        ),
+
         // 中央で要素配置
         child: Center(
           // Columnは縦に要素を並べる
