@@ -11,6 +11,7 @@ class Chinchiro extends StatelessWidget {
     return MaterialApp(
       // アプリのタイトル
       title: 'チンチロアプリ',
+      home: ChinchiroGame(),
     );
   }
 }
@@ -32,7 +33,61 @@ class ChinchiroGame extends StatefulWidget{
 class _ChinchiroGameState extends State<ChinchiroGame>{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      // 画面上部のタイトルバー
+      appBar: AppBar(
+        // タイトル文字
+        title: Text("チンチロ"),
+        // タイトルを中央に配置
+        centerTitle: true,
+      ),
+
+      // メインコンテンツエリア
+      // 画面全体を中央に配置
+      body: Center(
+        // 子要素を縦に並べる
+        child: Column(
+          // 縦方向の配置を中央に配置
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // メインタイトルのテキスト
+            Text(
+                "チンチロ",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red
+                ),
+            ),
+            // 縦方向に余白を設ける
+            SizedBox(height: 50),
+            // 説明文のテキスト
+            Text(
+              "サイコロを振る",
+              style: TextStyle(fontSize: 18),
+            ),
+            // 縦方向に余白を設ける
+            SizedBox(height: 50),
+
+            // サイコロを振るボタン
+            ElevatedButton(
+              // ボタンが押されたときの処理
+              onPressed: (){
+                print("ボタンが押された");
+              },
+              // ボタンに表示するテキスト
+              child: Text(
+                "サイコロを振る",
+                style: TextStyle(fontSize: 20),
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15)
+              ),
+            ),
+
+          ],
+        ),
+      ),
+    );
   }
 }
