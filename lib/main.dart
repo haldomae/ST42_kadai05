@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math'; // ランダム数値生成のために追加
 
 void main() {
   runApp(Chinchiro());
@@ -38,6 +39,59 @@ class _ChinchiroGameState extends State<ChinchiroGame>{
 
   // 結果メッセージを保存する変数
   String resultMessage = 'サイコロを振る';
+
+  // ランダムな数字生成
+  Random random = Random();
+
+  void rollDice(){
+    // 画面を自動更新
+    setState(() {
+      // 1〜6のランダムな数値を生成
+      dice1 = random.nextInt(6) + 1;  // nextInt(6)は0〜5を生成、+1で1〜6にする
+      dice2 = random.nextInt(6) + 1;
+      dice3 = random.nextInt(6) + 1;
+
+      // 役を判定して表示
+      resultMessage = checkChinchiroResult();
+    });
+  }
+
+  String checkChinchiroResult(){
+    // サイコロの値をリストにして並び替え
+    List<int> dices = [dice1, dice2, dice3];
+    dices.sort();  // 小さい順に並び替え
+
+    // ゾロ目の判定
+    if (dice1 == dice2 && dice2 == dice3) {
+      if (dice1 == 1) {
+        return "ピンゾロ(1のゾロ目)";
+      } else {
+        return "${dice1}のゾロ目";
+      }
+    }
+
+    // シゴロ（4・5・6）の判定
+    if (dices[0] == 4 && dices[1] == 5 && dices[2] == 6) {
+      return "シゴロ(4・5・6)";
+    }
+
+    // ヒフミ（1・2・3）の判定
+    if (dices[0] == 1 && dices[1] == 2 && dices[2] == 3) {
+      return "ヒフミ(1・2・3)";
+    }
+
+    // 目（同じ数字が2つある場合の残り1つ）の判定
+    if (dice1 == dice2) {
+      return "${dice3}の目";
+    } else if (dice1 == dice3) {
+      return "${dice2}の目";
+    } else if (dice2 == dice3) {
+      return "${dice1}の目";
+    }
+
+    // 上記のどれにも該当しない場合
+    return '目なし';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +197,7 @@ class _ChinchiroGameState extends State<ChinchiroGame>{
             ElevatedButton(
               // ボタンが押されたときの処理
               onPressed: (){
-                print("ボタンが押された");
+                rollDice();
               },
               // ボタンに表示するテキスト
               child: Text(
