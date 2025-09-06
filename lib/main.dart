@@ -31,6 +31,14 @@ class ChinchiroGame extends StatefulWidget{
 // _がある = プライベート(秘密)
 // _がない = パブリック(公開)
 class _ChinchiroGameState extends State<ChinchiroGame>{
+  // サイコロの値を保存する変数（初期値は1）
+  int dice1 = 1;  // 1つ目のサイコロ
+  int dice2 = 1;  // 2つ目のサイコロ
+  int dice3 = 1;  // 3つ目のサイコロ
+
+  // 結果メッセージを保存する変数
+  String resultMessage = 'サイコロを振る';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,9 +69,71 @@ class _ChinchiroGameState extends State<ChinchiroGame>{
             ),
             // 縦方向に余白を設ける
             SizedBox(height: 50),
+
+            // サイコロ表示エリア
+            Container(
+              decoration: BoxDecoration(
+                // 薄いグレー
+                color: Colors.grey[100],
+                // 角丸
+                borderRadius: BorderRadius.circular(15),
+                // 枠線
+                border: Border.all(color: Colors.grey)
+              ),
+              // 内側の余白
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Text(
+                    "サイコロの結果",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  // 縦に余白
+                  SizedBox(height: 15),
+
+                  // 3つのサイコロを横並びで表示(シンプルな数字のみ)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 等間隔で配置
+                    children: [
+                      // 1つ目のサイコロ
+                      Text(
+                        '$dice1',
+                        style: TextStyle(
+                          fontSize: 48,            // 大きな文字
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                      // 2つ目のサイコロ
+                      Text(
+                        '$dice2',
+                        style: TextStyle(
+                          fontSize: 48,            // 大きな文字
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                      // 3つ目のサイコロ
+                      Text(
+                        '$dice3',
+                        style: TextStyle(
+                          fontSize: 48,            // 大きな文字
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+
             // 説明文のテキスト
             Text(
-              "サイコロを振る",
+              resultMessage,
               style: TextStyle(fontSize: 18),
             ),
             // 縦方向に余白を設ける
