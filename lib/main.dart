@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Flutterのテスト",
       // メインのページ
-      home: HomePage()
+      // home: HomePage()
+      home: stateMaster(),
     );
   }
 }
@@ -40,8 +41,33 @@ class stateMaster extends StatefulWidget{
 class _stateTest extends State<stateMaster> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      // ヘッダー部分
+      appBar: AppBar(
+        title: Text("状態管理のテスト"),
+      ),
+
+      // メインコンテンツの部分
+      body: Center(
+        // 部品縦並べ
+        child: Column(
+          // 中央に配置
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("TEST"),
+            // ボタン
+            ElevatedButton(
+              // ボタン押された時の処理
+              onPressed: (){
+                print("ボタンが押された");
+              },
+              // ボタンに表示するテキスト
+              child: Text("TESTボタン")
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
