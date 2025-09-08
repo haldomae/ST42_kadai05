@@ -26,7 +26,15 @@ class HomePage extends StatelessWidget{
     // Scaffoldは画面の基本構成
     return Scaffold(
       appBar: AppBar(
-        title: Text("自分のアプリ"),
+        title: Text(
+            "自分のアプリ",
+          // テキストの装飾
+          style: TextStyle(
+            fontSize: 20, // 文字サイズ
+            fontWeight: FontWeight.bold // 太さ
+          ),
+        ),
+        backgroundColor: Colors.green,
       ),
       body: Center(
         child: Text(
