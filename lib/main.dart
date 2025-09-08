@@ -19,6 +19,33 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// 設計図(命令書)クラス
+// 状態が変わるので、StatefulWidgetを使う
+class stateMaster extends StatefulWidget{
+  @override
+  // 書き方1
+  // State<StatefulWidget> createState() {
+  //   return _stateTest();
+  // }
+  // 書き方2
+  _stateTest createState() => _stateTest();
+}
+
+
+// 実際の状態管理クラス
+// State
+// 実際の状態とデータを管理する作業員
+// _がある : プライベート
+// _がない : パブリック
+class _stateTest extends State<stateMaster> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
+
 // ホーム画面専用のクラス
 class HomePage extends StatelessWidget{
   @override
