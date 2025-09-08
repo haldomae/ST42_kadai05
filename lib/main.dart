@@ -39,6 +39,8 @@ class stateMaster extends StatefulWidget{
 // _がある : プライベート
 // _がない : パブリック
 class _stateTest extends State<stateMaster> {
+  String pushText = "まだ押されていない";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,12 +56,17 @@ class _stateTest extends State<stateMaster> {
           // 中央に配置
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("TEST"),
+            Text(pushText),
             // ボタン
             ElevatedButton(
               // ボタン押された時の処理
               onPressed: (){
                 print("ボタンが押された");
+                // 画面の自動更新
+                setState(() {
+                  // テキストを変更する
+                  pushText = "押された！！";
+                });
               },
               // ボタンに表示するテキスト
               child: Text("TESTボタン")
