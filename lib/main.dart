@@ -9,11 +9,11 @@ void main() {
 class stateMaster extends StatefulWidget {
   // 書き方1
   @override
-  State<StatefulWidget> createState() {
-    return _stetaTest();
-  }
+  // State<StatefulWidget> createState() {
+  //   return _stetaTest();
+  // }
   // 書き方2
-  // _stetaTest crateState() => _stetaTest();
+  _stetaTest createState() => _stetaTest();
 }
 
 // 実際の状態管理をするクラス
@@ -21,10 +21,43 @@ class stateMaster extends StatefulWidget {
 // _が付いている : プライベート
 // _が付いていない : パブリック
 class _stetaTest extends State<stateMaster>{
+  String pushText = "まだ押されていない";
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      // ヘッダー部分
+      appBar: AppBar(
+        title: Text("状態管理のテスト")
+      ),
+
+      // メインコンテンツの部分
+      body: Center(
+        // 部品を縦に並べる
+        child: Column(
+          // 中央に配置
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // テキスト
+            Text(pushText),
+            // ボタン
+            ElevatedButton(
+                // ボタンが押された時
+                onPressed: (){
+                  // 画面の自動更新
+                  setState(() {
+                    // テキスト変更
+                    pushText = "押された!!";
+                  });
+
+                  print("ボタンが押された");
+                },
+                // ボタンに表示するテキスト
+                child: Text("TESTボタン")
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -43,7 +76,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "NotoSans",
       ),
       // Scaffoldは画面の基本構成
-      home: HomePage(),
+      home: stateMaster(),
     );
   }
 }
