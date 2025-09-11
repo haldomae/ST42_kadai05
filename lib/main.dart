@@ -5,6 +5,30 @@ void main() {
   runApp(MyApp());
 }
 
+// 設計図(命令を行う)クラス
+class stateMaster extends StatefulWidget {
+  // 書き方1
+  @override
+  State<StatefulWidget> createState() {
+    return _stetaTest();
+  }
+  // 書き方2
+  // _stetaTest crateState() => _stetaTest();
+}
+
+// 実際の状態管理をするクラス
+// 実際の状態とデータを管理する作業員
+// _が付いている : プライベート
+// _が付いていない : パブリック
+class _stetaTest extends State<stateMaster>{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
+
 // StatelessWidgetは状態を持たない画面部品
 class MyApp extends StatelessWidget {
   @override
